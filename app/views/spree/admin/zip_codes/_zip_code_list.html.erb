@@ -1,0 +1,22 @@
+<table class="index" id='listing_zip_codes'>
+  <thead>
+    <tr>
+      <th><%= t("value") %></th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @zip_codes.each do |zip_code| %>
+      <tr id="<%= dom_id zip_code %>">
+        <td><%=zip_code.value %></td>
+        <td class="actions actions-2 text-right">
+          <%= link_to_edit(zip_code, :no_text => true) if can? :edit, zip_code %>
+          <%= link_to_delete(zip_code, :no_text => true) if can? :delete, zip_code %>
+        </td>
+      </tr>
+    <% end %>
+    <% if @zip_codes.empty? %>
+      <tr><td colspan="3"><%= t(:none) %></td></tr>
+    <% end %>
+  </tbody>
+</table>

@@ -8,3 +8,5 @@ en:
   add_zip_code: "Add Zip Code"
   new_zip_code: "New Zip Code"
   editing_zip_code: "Editing Zip Code"
+  back_to_zip_codes_list: "Back to zip codes list"
+  value: "Value"

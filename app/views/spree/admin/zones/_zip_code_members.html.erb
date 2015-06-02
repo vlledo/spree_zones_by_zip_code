@@ -1,0 +1,10 @@
+<div id="state_members" data-hook="member" class="omega six columns">
+  <fieldset class="no-border-bottom">
+    <legend align="center"><%= t(:zip_codes) %></legend>
+
+    <%= zone_form.field_container :zip_code_ids do %>
+      <%= zone_form.label :zip_code_ids, t("zip_codes") %><br>
+      <%= zone_form.collection_select :zip_code_ids, @zip_codes, :id, :value, { include_blank: true }, { multiple: true, class: "select2 fullwidth" } %>
+    <% end %>
+  </fieldset>
+</div>

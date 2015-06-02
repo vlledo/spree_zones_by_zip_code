@@ -1,0 +1,13 @@
+<% content_for :page_title do %>
+  <%= t("zip_codes") %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li id="new_zip_code_link">
+    <%= button_link_to t("new_zip_code"), new_admin_zip_code_url(@zip_code), { icon: 'plus', id: 'new_zip_code_link' } %>
+  </li>
+<% end %>
+
+<div id="state-list" data-hook>
+  <%= render partial: 'zip_code_list'%>
+</div>
