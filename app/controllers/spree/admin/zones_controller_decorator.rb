@@ -4,9 +4,10 @@ module Spree
       before_filter :load_zip_codes, except: [:index]
 
       protected
-        def load_zip_codes
-          @zip_codes = ZipCode.order(:value)
-        end
+      
+      def load_zip_codes
+        @zip_codes = ZipCode.order(:value)
+      end
 
     end
   end

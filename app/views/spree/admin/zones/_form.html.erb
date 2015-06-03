@@ -19,6 +19,7 @@
 
     <div data-hook="type" class="field">
       <%= label_tag Spree.t(:type) %>
+      <%= zone_form.hidden_field :kind, { id: 'zone-type' } %>
       <ul>
         <li>
           <%= zone_form.radio_button('kind', 'country', { id: 'country_based' }) %>
@@ -29,7 +30,7 @@
           <%= label_tag :state_based, Spree.t(:state_based) %>
         </li>
         <li>
-          <%= zone_form.radio_button("kind", "zip code", {id: "zip_code_based"}) %>
+          <%= zone_form.radio_button('kind', 'zip_code', { id: 'zip_code_based' }) %>
           <%= label_tag :zip_code_based, t("zip_code_based") %>
         </li>
       </ul>

@@ -1,6 +1,20 @@
 module Spree
   Zone.class_eval do
 
+    def self.match(address)
+      return unless address and matches = self.includes(:zone_members).
+        order('spree_zones.zone_members_count', 'spree_zones.created_at').
+        where("(spree_zone_members.zoneable_type = 'Spree::Country' AND spree_zone_members.zoneable_id = ?) OR (spree_zone_members.zoneable_type = 'Spree::State' AND spree_zone_members.zoneable_id = ?) OR (spree_zone_members.zoneable_type = 'Spree::ZipCode' AND spree_zone_members.zoneable_id = ?)", address.country_id, address.state_id, address.zipcode).
+        references(:zones)
+
+      ['state', 'country', 'zip_code'].each do |zone_kind|
+        if match = matches.detect { |zone| zone_kind == zone.kind }
+          return match
+        end
+      end
+      matches.first
+    end
+
     def include?(address)
       return false unless address
 
@@ -18,19 +32,24 @@ module Spree
       end
     end
 
-    def kind
-      member = self.members.last
-      case member && member.zoneable_type
-      when "State"  then "state"
-      when "Zone"   then "zone"
-      when "Zip Code" then "zip code"
+    def contains?(target)
+      return false if kind == 'state' && target.kind == 'country'
+      return false if kind == 'country' && target.kind == 'zip_code'
+      return false if kind == 'state' && target.kind == 'zip_code'
+      return false if kind == 'zip_code' && target.kind == 'state'
+      return false if kind == 'zip_code' && target.kind == 'country'
+      return false if zone_members.empty? || target.zone_members.empty?
+
+      if kind == target.kind
+        return false if (target.zoneables.collect(&:id) - zoneables.collect(&:id)).present?
       else
-        "country"
+        return false if (target.zoneables.collect(&:country).collect(&:id) - zoneables.collect(&:id)).present?
       end
+      true
     end
 
     def zip_code_ids
-      if kind == 'zip code'
+      if kind == 'zip_code'
         members.pluck(:zoneable_id)
       else
         []
