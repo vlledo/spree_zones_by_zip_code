@@ -1,7 +1,7 @@
 SpreeZonesByZipCode
 ===================
 
-Introduction goes here.
+Adds the ability to create zip codes and then used for zones. This extension is compatible with Spree 2.3
 
 Installation
 ------------
