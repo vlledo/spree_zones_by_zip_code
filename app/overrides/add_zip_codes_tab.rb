@@ -1,6 +1,6 @@
 Deface::Override.new(
-  virtual_path: 'spree/admin/shared/sub_menu/_configuration',
+  virtual_path: 'spree/admin/shared/_configuration_menu',
   name: 'add_zip_codes_tab',
-  insert_top: '[data-hook="admin_configurations_sidebar_menu"]',
-  text: '<li><%= link_to t("zip_codes"), admin_zip_codes_path %></li>'
-)
+  insert_bottom: "[data-hook='admin_configurations_sidebar_menu'], #admin_configurations_sidebar_menu[data-hook]",
+  text: '<%= configurations_sidebar_menu_item Spree.t(:zip_codes), admin_zip_codes_path %>',
+  disabled: false)

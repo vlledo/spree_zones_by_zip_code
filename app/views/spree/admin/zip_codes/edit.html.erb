@@ -1,12 +1,12 @@
 <%= render partial: 'spree/admin/shared/configuration_menu' %>
 
 <% content_for :page_title do %>
-  <%= t("editing_zip_code") %> <i class="fa fa-arrow-right"></i> <%= @zip_code.value %>
+  <%= Spree.t(:editing_zip_code) %> <i class="fa fa-arrow-right"></i> <%= @zip_code.value %>
 <% end %>
 
 <% content_for :page_actions do %>
   <li>
-    <%= button_link_to t("back_to_zip_codes_list"), spree.admin_zip_codes_path, icon: 'arrow-left' %>
+    <%= button_link_to Spree.t(:back_to_zip_codes_list), spree.admin_zip_codes_path, icon: 'arrow-left' %>
   </li>
 <% end %>
 

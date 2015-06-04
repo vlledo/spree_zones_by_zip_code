@@ -1,0 +1,10 @@
+es:
+  spree:
+    zip_code: "Código Postal"
+    zip_codes: "Códigos postales"
+    zip_code_based: "Basada en Códigos postales"
+    add_zip_code: "Añadir Código Postal"
+    new_zip_code: "Nuevo Código Postal"
+    editing_zip_code: "Editando Código Postal"
+    back_to_zip_codes_list: "Volver a la lista de Códigos Postales"
+    value: "Código Postal"

@@ -1,7 +1,7 @@
 <table class="index" id='listing_zip_codes'>
   <thead>
     <tr>
-      <th><%= t("value") %></th>
+      <th><%= Spree.t(:value) %></th>
       <th class="actions"></th>
     </tr>
   </thead>
@@ -16,7 +16,7 @@
       </tr>
     <% end %>
     <% if @zip_codes.empty? %>
-      <tr><td colspan="3"><%= t(:none) %></td></tr>
+      <tr><td colspan="3"><%= Spree.t(:none) %></td></tr>
     <% end %>
   </tbody>
 </table>
