@@ -3,8 +3,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_zones_by_zip_code'
   s.version     = '2.3.0'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
+  s.summary     = 'Spree zones by ZIP code'
+  s.description = 'Let spree specify zones by zip code.'
   s.required_ruby_version = '>= 2.0.0'
 
   s.author    = 'Víctor'
