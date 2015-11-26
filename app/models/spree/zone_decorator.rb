@@ -1,4 +1,4 @@
-module Spree
+  module Spree
   Zone.class_eval do
 
     def include?(address)
@@ -12,6 +12,7 @@ module Spree
           zone_member.zoneable_id == address.state_id
         when 'Spree::ZipCode'
           zipcode = ZipCode.find_by_value(address.zipcode)
+          return false if zipcode.nil?
           zone_member.zoneable_id == zipcode.id
         else
           false
@@ -22,6 +23,7 @@ module Spree
     def contains?(target)
       return false if kind == 'state' && target.kind == 'country'
       return false if kind == 'country' && target.kind == 'zip_code'
+      return false if kind == 'country' && target.kind == 'state'
       return false if kind == 'state' && target.kind == 'zip_code'
       return false if kind == 'zip_code' && target.kind == 'state'
       return false if kind == 'zip_code' && target.kind == 'country'
